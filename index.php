@@ -13,10 +13,22 @@
       }
     }
     if($_POST) {
-    require "controller/LoginController.php";
-    $controllerLogin = new LoginController(); // create an instance
-    $view = $controllerLogin->login($_POST);
+      if(isset($_POST["page"])) {
+        switch($_POST["page"]):
+          case "login":
+              require "controller/LoginController.php";
+              $controllerLogin = new LoginController(); // create an instance
+              $view = $controllerLogin->login($_POST);
+              break;
+          case "register":
+              require "controller/LoginController.php";
+              $controllerLogin = new LoginController(); // create an instance
+              $view = $controllerLogin->login($_POST);
+              break;
+          endswitch;
+        }
     }
+
     require $view;
 
     // $isEmail = $controllerLogin->validateEmail("zoublida@zoublida.com"); //validateEmail is function from loginController
